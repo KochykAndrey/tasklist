@@ -1,6 +1,7 @@
 package by.kochyk.tasklist.service;
 
 import by.kochyk.tasklist.domain.user.User;
+
 public interface UserService {
 
     User getById(Long id);

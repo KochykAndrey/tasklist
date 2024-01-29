@@ -31,7 +31,7 @@
         <springdoc.version>2.3.0</springdoc.version>
         <minio.version>8.5.7</minio.version>
         <xml-format.version>3.2.2</xml-format.version>
-        <checkstyle.version>3.3.1</checkstyle.version>
+        <checkstyle.version>3.2.2</checkstyle.version>
     </properties>
 
     <dependencies>

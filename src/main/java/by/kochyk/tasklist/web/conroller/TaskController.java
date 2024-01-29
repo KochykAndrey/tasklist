@@ -13,7 +13,16 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 
 @RestController
 @RequestMapping("/api/v1/tasks")
@@ -30,7 +39,7 @@ public class TaskController {
     @GetMapping("/{id}")
     @Operation(summary = "Get TaskDto by id")
     @PreAuthorize("canAccessTask(#id)")
-    public TaskDto getById(@PathVariable Long id){
+    public TaskDto getById(@PathVariable final Long id) {
         Task task = taskService.getById(id);
         return taskMapper.toDto(task);
     }
@@ -38,7 +47,10 @@ public class TaskController {
     @PutMapping
     @Operation(summary = "Update task")
     @PreAuthorize("canAccessTask(#dto.id)")
-    private TaskDto update(@Validated(OnUpdate.class) @RequestBody TaskDto dto){
+    private TaskDto update(
+            @Validated(OnUpdate.class)
+            @RequestBody
+            final TaskDto dto) {
         Task task = taskMapper.toEntity(dto);
         Task updateTask = taskService.update(task);
         return taskMapper.toDto(updateTask);
@@ -47,16 +59,19 @@ public class TaskController {
     @DeleteMapping("/{id}")
     @Operation(summary = "Delete task by id")
     @PreAuthorize("canAccessTask(#id)")
-    public void deleteById(@PathVariable Long id){
+    public void deleteById(@PathVariable final Long id) {
         taskService.delete(id);
     }
 
     @PostMapping("/{id}/image")
     @Operation(summary = "Upload image to task")
     @PreAuthorize("canAccessTask(#id)")
-    public void uploadImage(@PathVariable Long id,
-                            @Validated @ModelAttribute TaskImageDto imageDto){
+    public void uploadImage(@PathVariable
+                                final Long id,
+                            @Validated
+                            @ModelAttribute
+                                final TaskImageDto imageDto) {
         TaskImage image = taskImageMapper.toEntity(imageDto);
-        taskService.uploadImage(id,image);
+        taskService.uploadImage(id, image);
     }
 }
