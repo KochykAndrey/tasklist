@@ -4,6 +4,6 @@ import by.kochyk.tasklist.domain.task.TaskImage;
 
 public interface ImageService {
 
-    String upload (TaskImage image);
+    String upload(TaskImage image);
 
 }

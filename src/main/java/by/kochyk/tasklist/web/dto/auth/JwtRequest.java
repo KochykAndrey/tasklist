@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 @Schema(description = "Request for login")
-public class JwtRequest  {
+public class JwtRequest {
 
     @Schema(description = "email", example = "johndoe@gmail.com")
     @NotNull(message = "Username must be not null.")

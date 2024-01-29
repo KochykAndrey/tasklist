@@ -1,6 +1,5 @@
 package by.kochyk.tasklist.web.mappers;
 
-
 import java.util.List;
 
 public interface Mappable<E, D> {
@@ -12,5 +11,4 @@ public interface Mappable<E, D> {
     E toEntity(D dto);
 
     List<E> toEntity(List<D> dtos);
-
 }

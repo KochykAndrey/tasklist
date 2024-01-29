@@ -1,8 +1,8 @@
 package by.kochyk.tasklist.domain.exception;
 
-public class ResourceMappingException extends RuntimeException{
+public class ResourceMappingException extends RuntimeException {
 
-    public ResourceMappingException(String message) {
+    public ResourceMappingException(final String message) {
         super(message);
     }
 
